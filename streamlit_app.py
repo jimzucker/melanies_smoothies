@@ -1,6 +1,7 @@
 # Import python packages
 import streamlit as st
 from snowflake.snowpark.functions import col
+import requests
 
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie :cup_with_straw:")
@@ -40,3 +41,6 @@ values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
             session.sql(my_insert_stmt).collect()
             st.success(name_on_order + ', your Smoothie is ordered!', icon="✅")
             
+# New section to display fruityvice nutrition information
+fruityvice_response = requests.get ("https://fruityvice.com/api/fruit/watermelon")
+st. text(fruityvice_response)
