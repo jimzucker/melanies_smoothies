@@ -43,4 +43,4 @@ values ('""" + ingredients_string + """','"""+name_on_order+"""')"""
             
 # New section to display fruityvice nutrition information
 fruityvice_response = requests.get ("https://fruityvice.com/api/fruit/watermelon")
-st. text(fruityvice_response)
+st. text(fruityvice_response.json())
